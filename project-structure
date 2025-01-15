@@ -1,0 +1,15 @@
+clickup-sync/
+├── src/
+│   ├── config/
+│   │   └── config.js
+│   ├── db/
+│   │   └── index.js
+│   ├── services/
+│   │   ├── clickup.js
+│   │   └── sync.js
+│   ├── models/
+│   │   └── index.js
+│   └── index.js
+├── Dockerfile
+├── package.json
+└── docker-compose.yml 

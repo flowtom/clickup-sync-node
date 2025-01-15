@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  clickup-sync:
+    build: .
+    environment:
+      - CLICKUP_API_TOKEN=${CLICKUP_API_TOKEN}
+      - CLICKUP_WORKSPACE_ID=${CLICKUP_WORKSPACE_ID}
+      - POSTGRES_HOST=host.docker.internal
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - PORT=3000
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - airbyte_network
+    volumes:
+      - .:/app
+
+networks:
+  airbyte_network:
+    external: true 
